@@ -1,59 +1,88 @@
 package portaleventos;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import java.time.LocalDate;
+public class Gere {
 
-public class Gere
-{
-    SessionFactory sessionFactory = new Configuration()
-        .configure("hibernate.cfg.xml")
-        .buildSessionFactory();
-    Session session = sessionFactory.openSession();
+    private static SessionFactory sessionFactory;
 
-    public void exit()
-    {
-        if (sessionFactory != null)
-        {
-            sessionFactory.close();
-        }
+    public Gere(){
+        sessionFactory = new Configuration().configure().buildSessionFactory();
     }
 
-    public void criar(String tituloEvento, String nomePromotores, LocalDate data, int duracao, String local, String descricaoBreve, Enum TipoEvento, Enum Departamento, int orcamento, int capacidade, Enum Estado)
-    {
+    public void criarTipoEvento( Evento evento) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        // --- Create Pedidos ---
-        Pedido p1 = new Pedido(tituloEvento, nomePromotores, data, duracao, local, descricaoBreve, TipoEvento, Departamento, orcamento, capacidade, Estado);
-        session.persist(p1);
+        session.persist(evento);
 
         session.getTransaction().commit();
         session.close();
-        System.out.println("Pedido criado!");
+        System.out.println("Tipo de evento criado com sucesso");
     }
 
-    public void listar()
-    {
-        session.createQuery("from Pedido").list().forEach(System.out::println);
-    }
 
-    public void atualizar(Pedido p1)
-    {
+    @SuppressWarnings("deprecation")
+    public void atualizarTipoEvento(Long id, String novoPatrocinador, String novoLink) {
+        Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.merge(p1);
+
+        Evento evento = session.get(Evento.class, id);
+        if (evento != null) {
+            if(evento instanceof Festa f) {
+                f.setPatrocinadores(novoPatrocinador);
+                f.setLink(novoLink);
+                session.update(f);
+                System.out.println("Festa atualizada com sucesso");
+            }
+            else if (evento instanceof Workshop w) {
+                w.setPatrocinadores(novoPatrocinador);
+                w.setLink(novoLink);
+                session.update(w);
+                System.out.println("Workshop atualizada com sucesso");
+            }
+            else if (evento instanceof Exposicao e) {
+                e.setPatrocinadores(novoPatrocinador);
+                e.setLink(novoLink);
+                session.update(e);
+                System.out.println("Exposição atualizada com sucesso");
+            }
+            else if (evento instanceof Palestra p) {
+                p.setPatrocinadores(novoPatrocinador);
+                session.update(p);
+                System.out.println("Palestra atualizada com sucesso");
+            }
+        } else {
+            System.out.println("Evento com ID " + id + " não encontrado");
+        }
+
         session.getTransaction().commit();
-        System.out.println("Pedido atualizado...");
+        session.close();
     }
 
-    public void remover(Pedido p1)
-    {
+    @SuppressWarnings("deprecation")
+    public void eliminarTipoEventos(Long id) {
+        Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.remove(p1);
+
+        Evento evento = session.get(Evento.class, id);
+        if (evento != null) {
+            session.delete(evento);
+            System.out.println("Tipo de evento eliminado com sucesso");
+        } else {
+            System.out.println("Evento com ID " + id + " não encontrado!");
+        }
+
         session.getTransaction().commit();
-        System.out.println("Pedido removido...");
+        session.close();
     }
 
-
+    public void listarEventos() {
+        Session session = sessionFactory.openSession();
+        var lista = session.createQuery("FROM Evento" ,  Evento.class).list();
+        for(Evento e : lista) {
+            System.out.println("Evento: " + e);
+        }
+        session.close();
+    }
 }
