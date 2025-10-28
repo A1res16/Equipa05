@@ -15,7 +15,8 @@ public class Gere {
         // Inicializa o SessionFactory usando hibernate.cfg.xml
         sessionFactory = new Configuration().configure().buildSessionFactory();
     }
-
+    
+    //tem de chamar logo no menu 
     public void criarAdmin() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -31,7 +32,8 @@ public class Gere {
         session.getTransaction().commit();
         session.close();
     }
-
+    
+    //apenas para o admin
     public void criarConta(String username, String password,Tipo tipo,Perfil perfil) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -48,29 +50,21 @@ public class Gere {
         session.close();
     }
     
-    public void trocarPassword(String username, String novaPassword) {
+    //depois de dar login
+    public void trocarPassword(Person person, String novaPassword) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-
-        // Pesquisa o utilizador pelo nome
-        Person p = (Person) session.createQuery("FROM Person WHERE username = :username")
-            .setParameter("username", username)
-            .uniqueResult();
-
-        if (p != null) {
-            // Atualiza a password
-            p.setPassword(novaPassword);
-            session.update(p); 
-        }
-        else {
-        	System.out.println("O username não existe");
-        }
+       
+        // Atualiza a password
+        person.setPassword(novaPassword);
+        session.update(person); 
 
         session.getTransaction().commit();
         session.close();
     }
     
-    public void eleminarConta(String username)
+    //apenas para o admin
+    public void eliminarConta(String username)
     {
     	Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -92,6 +86,7 @@ public class Gere {
             session.close();
     }
     
+    //apenas para o admin
     public void trocarTipo(String username,Tipo tipo)
     {
     	Session session = sessionFactory.openSession();
