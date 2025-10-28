@@ -34,13 +34,24 @@ public class Gere
         System.out.println("Pedido criado!");
     }
 
+    public void listar()
+    {
+        session.createQuery("from Pedido").list().forEach(System.out::println);
+    }
 
-
-
+    public void atualizar(Pedido p1)
+    {
+        session.beginTransaction();
+        session.merge(p1);
+        session.getTransaction().commit();
+        System.out.println("Pedido atualizado...");
+    }
 
     public void remover(Pedido p1)
     {
+        session.beginTransaction();
         session.remove(p1);
+        session.getTransaction().commit();
         System.out.println("Pedido removido...");
     }
 

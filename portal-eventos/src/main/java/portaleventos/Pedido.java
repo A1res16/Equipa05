@@ -73,5 +73,18 @@ public class Pedido
         this.TipoEvento = TipoEvento;
         this.Departamento = Departamento;
         this.orcamento = orcamento;
+        this.capacidade = capacidade;
+        this.Estado = Estado;
+    }
+
+
+    public Enum getEstado()
+    {
+        return Estado;
+    }
+
+    public void setEstado(Enum estado)
+    {
+        this.Estado = estado;
     }
 }
