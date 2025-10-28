@@ -16,7 +16,13 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 
-public class Gere 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import java.time.LocalDate;
+
+public class Gere
 {
 	
     //Helpers de sessão/transação
