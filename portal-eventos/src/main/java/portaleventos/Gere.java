@@ -1,4 +1,20 @@
 package portaleventos;
+/**@author aires
+ * @version 1
+ */
+
+//Esta classe serve de gestao dos metodos do sistema
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+import portaleventos.*;
+import portaleventos.HibernateUtil;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
