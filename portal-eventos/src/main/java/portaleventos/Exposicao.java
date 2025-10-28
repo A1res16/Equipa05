@@ -22,6 +22,7 @@ public class Exposicao extends Evento {
 		
 	}
 	
+	
 	public String getPatrocinadores() {
         return patrocinadores;
     }

@@ -21,6 +21,7 @@ public class Gere {
 		System.out.println("Tipo de evento criado com sucesso");
 	}
 	
+	
 	@SuppressWarnings("deprecation")
 	public void atualizarTipoEvento(Long id, String novoPatrocinador, String novoLink) {
 		Session session = sessionFactory.openSession();
@@ -60,7 +61,7 @@ public class Gere {
 				}
 	
 	@SuppressWarnings("deprecation")
-	public void eliminarTipoEvento(Long id) {
+	public void eliminarTipoEventos(Long id) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		

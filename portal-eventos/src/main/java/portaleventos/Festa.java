@@ -20,6 +20,7 @@ public Festa(String patrocinadores, String link) {
 	this.link = link;
 }
 
+
 public String getPatrocinadores() {
 	return patrocinadores;
 }

@@ -21,6 +21,7 @@ public class Workshop  extends Evento{
 		this.link = link;
 	}
 	
+	
 	public String getPatrocinadores() {
         return patrocinadores;
     }
