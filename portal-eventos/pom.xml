@@ -1,6 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>pt.upt.equipa5</groupId>
-  <artifactId>portal-eventos</artifactId>
+  <groupId>ulp.lp.hibernate</groupId>
+  <artifactId>hibernate-intro</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <name>Hibernate CRUD First Example Program</name>
+
+
+  <dependencies>
+    <!-- Hibernate ORM 6.2.x -->
+    <dependency>
+      <groupId>org.hibernate.orm</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>6.2.10.Final</version>
+    </dependency>
+
+    <!-- MySQL Connector -->
+    <dependency>
+      <groupId>com.mysql</groupId>
+      <artifactId>mysql-connector-j</artifactId>
+      <version>8.4.0</version>
+    </dependency>
+
+    <!-- jakarta.persistence -->
+    <dependency>
+      <groupId>jakarta.persistence</groupId>
+      <artifactId>jakarta.persistence-api</artifactId>
+      <version>3.1.0</version>
+    </dependency>
+  </dependencies>
+
 </project>
