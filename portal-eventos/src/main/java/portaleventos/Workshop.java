@@ -25,6 +25,7 @@ public class Workshop  extends Evento{
 	public String getPatrocinadores() {
         return patrocinadores;
     }
+	
 
     public void setPatrocinadores(String patrocinadores) {
         this.patrocinadores = patrocinadores;

@@ -27,6 +27,7 @@ public class Palestra extends Evento {
         return oradores;
     }
 	
+	
 
     public void setOradores(String oradores) {
         this.oradores = oradores;

@@ -21,6 +21,7 @@ public Festa(String patrocinadores, String link) {
 }
 
 
+
 public String getPatrocinadores() {
 	return patrocinadores;
 }

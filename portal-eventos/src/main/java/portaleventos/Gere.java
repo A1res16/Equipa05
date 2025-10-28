@@ -22,6 +22,7 @@ public class Gere {
 	}
 	
 	
+	
 	@SuppressWarnings("deprecation")
 	public void atualizarTipoEvento(Long id, String novoPatrocinador, String novoLink) {
 		Session session = sessionFactory.openSession();
