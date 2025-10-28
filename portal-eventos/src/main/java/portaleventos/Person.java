@@ -43,10 +43,11 @@ public class Person {
 	 * @param password
 	 * @param tipo
 	 */
-	public Person(String username, String password,Tipo tipo) {
+	public Person(String username, String password,Tipo tipo,Perfil perfil) {
 		this.username = username;
 		this.password = password;
 		this.tipo=tipo;
+		this.perfil=perfil;
 	}
 
 	/**
@@ -104,5 +105,20 @@ public class Person {
 	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
 	}
+
+	/**
+	 * @return the perfil
+	 */
+	public Perfil getPerfil() {
+		return perfil;
+	}
+
+	/**
+	 * @param perfil the perfil to set
+	 */
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
+	}
+	
 	
 }
