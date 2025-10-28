@@ -62,7 +62,8 @@ public class Pedido
     public Pedido() {
     }
 
-    public Pedido(String tituloEvento, String nomePromotores, LocalDate data, int duracao, String local, String descricaoBreve, Enum TipoEvento, Enum Departamento, int orcamento, int capacidade, Enum Estado) {
+    public Pedido(String tituloEvento, String nomePromotores, LocalDate data, int duracao, String local, String descricaoBreve, Enum TipoEvento, Enum Departamento, int orcamento, int capacidade, Enum Estado)
+    {
         this.tituloEvento = tituloEvento;
         this.nomePromotores = nomePromotores;
         this.data = data;

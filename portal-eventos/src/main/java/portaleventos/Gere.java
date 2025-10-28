@@ -21,7 +21,7 @@ public class Gere
         }
     }
 
-    public void create(String tituloEvento, String nomePromotores, LocalDate data, int duracao, String local, String descricaoBreve, Enum TipoEvento, Enum Departamento, int orcamento, int capacidade, Enum Estado)
+    public void criar(String tituloEvento, String nomePromotores, LocalDate data, int duracao, String local, String descricaoBreve, Enum TipoEvento, Enum Departamento, int orcamento, int capacidade, Enum Estado)
     {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -38,7 +38,7 @@ public class Gere
 
 
 
-    public void remove(Pedido p1)
+    public void remover(Pedido p1)
     {
         session.remove(p1);
         System.out.println("Pedido removido...");
