@@ -1,4 +1,20 @@
 package portaleventos;
+/**@author aires
+ * @version 1
+ */
+
+//Esta classe serve de gestao dos metodos do sistema
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+import portaleventos.*;
+import portaleventos.HibernateUtil;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -109,6 +125,25 @@ public class Gere {
         session.getTransaction().commit();
         session.close();
     }
+    
+    public void eliminarEvento(SessionFactory sessionFactory, int eventoId) {
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+
+            Evento evento = session.get(Evento.class, eventoId);
+            if (evento != null) {
+                session.remove(evento);
+                System.out.println("Evento eliminado com sucesso!");
+            } else {
+                System.out.println("Evento com ID " + eventoId + " não encontrado.");
+            }
+
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println("Erro ao eliminar evento: " + e.getMessage());
+        }
+    }
+}
 
 }
 
