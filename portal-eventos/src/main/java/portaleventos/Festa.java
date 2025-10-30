@@ -1,9 +1,12 @@
 package portaleventos;
+import java.time.LocalDateTime;
+
 import jakarta.persistence.*;
 
 
 @Entity
 @Table(name = "Festa")
+@DiscriminatorValue ("Festa")
 public class Festa  extends Evento{
 
 
@@ -13,7 +16,21 @@ public class Festa  extends Evento{
     @Column(name = "link" ,  length = 255)
     private String link;
 
+    public Festa(String tituloEvento, String descricao, LocalDateTime dataHoraInicio,
+            LocalDateTime dataHoraFim, String local, int capacidade,
+            float precoEntrada, String nomeCompletoOrganizador,
+            String emailOrganizador, int contatoOrganizador,
+            String patrocinadores, String link) {
 
+    /*super(tituloEvento, descricao, dataHoraInicio, dataHoraFim, local,
+    capacidade, precoEntrada, nomeCompletoOrganizador,
+    emailOrganizador, contatoOrganizador);*/
+
+	this.patrocinadores = patrocinadores;
+	this.link = link;
+}
+
+    
 
     public Festa(String patrocinadores, String link) {
         this.patrocinadores = patrocinadores;
@@ -34,17 +51,6 @@ public class Festa  extends Evento{
 
     public void setLink(String link) {
         this.link = link;
-    }
-
-    @Override
-    public String toString() {
-        return "Festa{" +
-                "id=" + getId() +
-                ", dataInicio=" + getDataInicio() +
-                ", dataFinal=" + getDataFinal() +
-                ", patrocinadores='" + patrocinadores + '\'' +
-                ", link='" + link + '\'' +
-                '}';
     }
 
 }

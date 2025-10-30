@@ -1,8 +1,12 @@
 package portaleventos;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import jakarta.persistence.*;
+import portaleventos.Enum.Departamento;
+import portaleventos.Enum.TipoEvento;
 
 /**
  * Esta classe representa um evento e é a superclasse da hierarquia
@@ -16,15 +20,33 @@ DiscriminatorType.STRING, length = 20)
 
 public class Evento {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="evento_id")
+	private long id;
+	
 	private String tituloEvento;
 	private String descricao;
 	
-	private LocalDateTime dataHorarioInicio;
-	private LocalDateTime dataHorarioFim;
+	private LocalDate data;
+	private LocalTime dataHorarioInicio;
+	private LocalTime dataHorarioFim;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+	private TipoEvento TipoEvento;
+
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+	private Departamento Departamento;
+
+	private float Orcamento;
 	
 	private String local;
 	private int capacidade;
 	private float precoEntrada;
+	
+	private String nomePromotores;
 	
 	// Dados do Organizador
 	private String nomeCompletoOrganizador;
@@ -33,22 +55,45 @@ public class Evento {
 	
 	public Evento() {}
 	
+	@ManyToOne
+	@JoinColumn(name = "participante_id")
+	private Participante participante;
 	
+	@ManyToOne
+	@JoinColumn(name = "promotor_id")
+	private Promotor promotor;
 
-	public Evento(String tituloEvento, String descricao, LocalDateTime dataHorarioInicio, LocalDateTime dataHorarioFim,
-			String local, int capacidade, float precoEntrada, String nomeCompletoOrganizador, String emailOrganizador,
+	public Evento(String tituloEvento, String descricao, LocalDate data, LocalTime horaInicio,
+			LocalTime horaFim, portaleventos.Enum.TipoEvento tipoEvento,
+			portaleventos.Enum.Departamento departamento, float orcamento, String local, int capacidade,
+			float precoEntrada, String nomePromotores, String nomeCompletoOrganizador, String emailOrganizador,
 			int contactoOrganizador) {
 		this.tituloEvento = tituloEvento;
 		this.descricao = descricao;
-		this.dataHorarioInicio = dataHorarioInicio;
-		this.dataHorarioFim = dataHorarioFim;
+		this.data = data;
+		dataHorarioInicio = horaInicio;
+		dataHorarioFim = horaFim;
+		TipoEvento = tipoEvento;
+		Departamento = departamento;
+		Orcamento = orcamento;
 		this.local = local;
 		this.capacidade = capacidade;
 		this.precoEntrada = precoEntrada;
+		this.nomePromotores = nomePromotores;
 		this.nomeCompletoOrganizador = nomeCompletoOrganizador;
 		this.emailOrganizador = emailOrganizador;
 		this.contactoOrganizador = contactoOrganizador;
 	}
+
+
+
+	/**
+	 * @return the id
+	 */
+	public long getId() {
+		return id;
+	}
+
 
 
 	public String getTituloEvento() {
@@ -67,19 +112,19 @@ public class Evento {
 		this.descricao = descricao;
 	}
 
-	public LocalDateTime getDataHorarioInicio() {
+	public LocalTime getDataHorarioInicio() {
 		return dataHorarioInicio;
 	}
 
-	public void setDataHorarioInicio(LocalDateTime dataHorarioInicio) {
+	public void setDataHorarioInicio(LocalTime dataHorarioInicio) {
 		this.dataHorarioInicio = dataHorarioInicio;
 	}
 
-	public LocalDateTime getDataHorarioFim() {
+	public LocalTime getDataHorarioFim() {
 		return dataHorarioFim;
 	}
 
-	public void setDataHorarioFim(LocalDateTime dataHorarioFim) {
+	public void setDataHorarioFim(LocalTime dataHorarioFim) {
 		this.dataHorarioFim = dataHorarioFim;
 	}
 
@@ -129,6 +174,11 @@ public class Evento {
 
 	public void setContactoTelefonicoOrganizador(int contactoOrganizador) {
 		contactoOrganizador = contactoOrganizador;
+	}
+
+
+
+	public void setPromotor(Promotor promotor2) {
 	}
 	
 	

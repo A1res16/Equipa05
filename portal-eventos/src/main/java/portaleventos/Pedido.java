@@ -2,6 +2,9 @@ package portaleventos;
 
 import jakarta.persistence.*;
 
+import portaleventos.Enum.TipoEvento;
+import portaleventos.Enum.Departamento;
+import portaleventos.Enum.Estado;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,21 +28,21 @@ public class Pedido
 
     //Duração em MINUTOS  (IMPLEMENTAR NAS USER STORIES)
     @Column(nullable = false)
-    private int duracao;
+    private float duracao;
 
     @Column(nullable = false)
     private String local;
 
-    @Column(nullable = false)
-    private String descricaoBreve;
+    @Column(name = "descricao", nullable = false)
+    private String descricao;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Enum TipoEvento;
+    private TipoEvento TipoEvento;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Enum Departamento;
+    private Departamento Departamento;
 
     //Orçamento em euros;
     @Column(nullable = false)
@@ -49,27 +52,23 @@ public class Pedido
     private int capacidade;
 
     @Column(nullable = false)
-    private Enum Estado;
+    private Estado Estado;
 
     @ManyToOne
-    @JoinTable(
-            name = "promotor_pedido",
-            joinColumns = @JoinColumn(name = "pedido_id"),
-            inverseJoinColumns = @JoinColumn(name = "promotor_id")
-    )
-    private Set<Promotor> promotores = new HashSet<>();
+    @JoinColumn(name = "promotor_id")
+    private Promotor promotor;
 
     public Pedido() {
     }
 
-    public Pedido(String tituloEvento, String nomePromotores, LocalDate data, int duracao, String local, String descricaoBreve, Enum TipoEvento, Enum Departamento, int orcamento, int capacidade, Enum Estado)
+    public Pedido(String tituloEvento, String nomePromotores, LocalDate data, float duracao, String local, String descricao, TipoEvento TipoEvento, Departamento Departamento, int orcamento, int capacidade, Estado Estado)
     {
         this.tituloEvento = tituloEvento;
         this.nomePromotores = nomePromotores;
         this.data = data;
         this.duracao = duracao;
         this.local = local;
-        this.descricaoBreve = descricaoBreve;
+        this.descricao = descricao;
         this.TipoEvento = TipoEvento;
         this.Departamento = Departamento;
         this.orcamento = orcamento;
@@ -78,13 +77,188 @@ public class Pedido
     }
 
 
-    public Enum getEstado()
+    public Estado getEstado()
     {
         return Estado;
     }
 
-    public void setEstado(Enum estado)
+    public void setEstado(Estado estado)
     {
         this.Estado = estado;
     }
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the tituloEvento
+	 */
+	public String getTituloEvento() {
+		return tituloEvento;
+	}
+
+	/**
+	 * @param tituloEvento the tituloEvento to set
+	 */
+	public void setTituloEvento(String tituloEvento) {
+		this.tituloEvento = tituloEvento;
+	}
+
+	/**
+	 * @return the nomePromotores
+	 */
+	public String getNomePromotores() {
+		return nomePromotores;
+	}
+
+	/**
+	 * @param nomePromotores the nomePromotores to set
+	 */
+	public void setNomePromotores(String nomePromotores) {
+		this.nomePromotores = nomePromotores;
+	}
+
+	/**
+	 * @return the data
+	 */
+	public LocalDate getData() {
+		return data;
+	}
+
+	/**
+	 * @param data the data to set
+	 */
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
+
+	/**
+	 * @return the duracao
+	 */
+	public float getDuracao() {
+		return duracao;
+	}
+
+	/**
+	 * @param duracao the duracao to set
+	 */
+	public void setDuracao(float duracao) {
+		this.duracao = duracao;
+	}
+
+	/**
+	 * @return the local
+	 */
+	public String getLocal() {
+		return local;
+	}
+
+	/**
+	 * @param local the local to set
+	 */
+	public void setLocal(String local) {
+		this.local = local;
+	}
+
+	/**
+	 * @return the descricaoBreve
+	 */
+	public String getDescricao() {
+		return descricao;
+	}
+
+	/**
+	 * @param descricao the descricaoBreve to set
+	 */
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	/**
+	 * @return the tipoEvento
+	 */
+	public TipoEvento getTipoEvento() {
+		return TipoEvento;
+	}
+
+	/**
+	 * @param tipoEvento the tipoEvento to set
+	 */
+	public void setTipoEvento(TipoEvento tipoEvento) {
+		TipoEvento = tipoEvento;
+	}
+
+	/**
+	 * @return the departamento
+	 */
+	public Departamento getDepartamento() {
+		return Departamento;
+	}
+
+	/**
+	 * @param departamento the departamento to set
+	 */
+	public void setDepartamento(Departamento departamento) {
+		Departamento = departamento;
+	}
+
+	/**
+	 * @return the orcamento
+	 */
+	public int getOrcamento() {
+		return orcamento;
+	}
+
+	/**
+	 * @param orcamento the orcamento to set
+	 */
+	public void setOrcamento(int orcamento) {
+		this.orcamento = orcamento;
+	}
+
+	/**
+	 * @return the capacidade
+	 */
+	public int getCapacidade() {
+		return capacidade;
+	}
+
+	/**
+	 * @param capacidade the capacidade to set
+	 */
+	public void setCapacidade(int capacidade) {
+		this.capacidade = capacidade;
+	}
+
+	/**
+	 * @return the promotor
+	 */
+	public Promotor getPromotor() {
+		return promotor;
+	}
+
+	/**
+	 * @param promotor the promotor to set
+	 */
+	public void setPromotor(Promotor promotor) {
+		this.promotor = promotor;
+	}
+
+    public void imprimir()
+    {
+
+    }
+
+    
 }

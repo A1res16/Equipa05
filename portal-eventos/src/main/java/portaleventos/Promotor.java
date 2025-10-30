@@ -15,5 +15,21 @@ public class Promotor extends Person{
 	
 	@OneToMany(mappedBy="promotor", cascade = CascadeType.ALL,orphanRemoval=true)
 	private List<Evento>eventos=new ArrayList<Evento>();
+
 	
+	 public void verPedidos() {
+	        if (pedidos == null || pedidos.isEmpty()) {
+	            System.out.println("Este promotor não tem pedidos registados.");
+	        } else {
+	            System.out.println("Pedidos do promotor:");
+	            for (Pedido p : pedidos) {
+	                System.out.println(p);
+	            }
+	        }
+	    }
+	 
+	 public List<Pedido> getPedidos() {
+		    return pedidos;
+		}
+	 
 }

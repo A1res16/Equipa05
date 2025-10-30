@@ -1,9 +1,8 @@
 package portaleventos;
 
 import Enum.Tipo;
-import Enum.Perfil;
-
 import jakarta.persistence.*;
+import Enum.Perfil;
 
 
 @Entity
