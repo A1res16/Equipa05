@@ -1,6 +1,7 @@
 package portaleventos;
 
 
+
 //Esta classe descreve uma area
 import jakarta.persistence.*;
 

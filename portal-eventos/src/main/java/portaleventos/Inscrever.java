@@ -2,6 +2,7 @@ package portaleventos;
 
 //Esta classe descreve uma inscricao a um evento, depois de aceite o pedido
 
+
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 

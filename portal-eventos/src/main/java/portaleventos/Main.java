@@ -52,6 +52,7 @@ public class Main {
         System.out.println("Adeus!");
     }
 
+    
     // ---------------------- MENU ----------------------
     private static void mostrarMenu() {
         System.out.println("\n -------- MENU de DEMONSTRACAO ------- ");

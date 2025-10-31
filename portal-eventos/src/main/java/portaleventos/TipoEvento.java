@@ -3,6 +3,7 @@ package portaleventos;
 //Esta classe descreve um tipo de evento, da lista de eventos
 
 import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 

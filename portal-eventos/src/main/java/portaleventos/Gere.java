@@ -131,6 +131,7 @@ public class Gere
  public void criarParticipante(Participante p) 
  { 
 	 persist(p); 
+	 
  }
  public List<Participante> listarParticipantes() 
  {

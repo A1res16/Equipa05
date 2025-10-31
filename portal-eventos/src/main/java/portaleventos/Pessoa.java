@@ -5,6 +5,7 @@ package portaleventos;
 import jakarta.persistence.*;
 
 
+
 @Entity //usamos entity ou @table antes da classe para mapear ela para uma tabela
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) //para todas as entidades na hierarquia serão guardadas numa única tabela
 @DiscriminatorColumn (name = "perfil", length = 20) //usado para distinguir entre diferentes tipos de entidades na única tabela com herança

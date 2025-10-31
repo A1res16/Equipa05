@@ -4,6 +4,7 @@ package portaleventos;
  */
 //Esta classe descreve uma fabrica de sessao, no hibernate para fazermos as operacoes na Base de dados, fazemos via sessao na SessioFactory
 
+
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;

@@ -1,5 +1,6 @@
 package portaleventos;
 
+
 //Esta classe descreve um evento, depois de aceite o pedido
 
 import jakarta.persistence.*;

@@ -4,6 +4,7 @@ package portaleventos;
 //Esta classe descreve um patrocinador 
 import jakarta.persistence.*;
 
+
 @Entity
 public class Patrocinador {
 

@@ -4,6 +4,7 @@ package portaleventos;
 //Esta classe descreve um orador 
 import jakarta.persistence.*;
 
+
 @Entity
 public class Orador {
 

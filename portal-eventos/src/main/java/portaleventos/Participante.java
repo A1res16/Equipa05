@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Entity
 @DiscriminatorValue("PARTICIPANTE") //@DiscriminatorValue define qual perfil ou subclasse o registro representa 
 //na coluna adicional na tabela criada pelo @DiscriminatorColumn

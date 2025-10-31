@@ -1,6 +1,7 @@
 package portaleventos;
 
 
+
 //Esta classe descreve um formulario 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
