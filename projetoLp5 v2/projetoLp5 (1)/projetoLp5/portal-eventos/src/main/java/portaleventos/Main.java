@@ -2,7 +2,6 @@ package portaleventos;
 /**@author aires
  * @version 2
  */
-
 //Esta classe serve de menu do sistema
 
 import com.mysql.cj.Session;

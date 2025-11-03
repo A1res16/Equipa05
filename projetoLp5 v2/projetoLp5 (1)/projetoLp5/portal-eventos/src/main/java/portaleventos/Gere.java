@@ -2,7 +2,6 @@ package portaleventos;
 /**@author aires
  * @version 2
  */
-
 //Esta classe serve de gestao dos metodos do sistema
 
 import org.hibernate.Session;
